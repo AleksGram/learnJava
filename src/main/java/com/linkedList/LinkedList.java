@@ -1,14 +1,15 @@
-package linkedList;
+package com.linkedList;
 
 /**
  * Created by Грам on 07.03.2017.
  */
 
  public class LinkedList {
+    public LinkedList(){}
   private Node head;
   private Node tail;
 
-     public LinkedList(){}
+
      int size=0;
 
     public void add(Integer data){
@@ -29,25 +30,25 @@ package linkedList;
     }
 
     public Integer get(int index) {
-       // System.out.println("Find me " + index + " element");
+      System.out.println("Find me " + index + " element");
 
         if(head.getIndex()!=index&&tail.getIndex()!=index){
             Node findElement=head;
             while(findElement.getNext()!=null){
                 if(findElement.getIndex()==index){
-                   // System.out.println("your element is "+findElement.getData());
+                  System.out.println("your element is "+findElement.getData());
                     return findElement.getData();
                 }
                 findElement=findElement.getNext();
             }
         }else if(head.getIndex()==index){
-          //  System.out.println("your element is "+head.getData());
+         System.out.println("your element is "+head.getData());
             return head.getData();
         }else if (tail.getIndex()==index){
-           // System.out.println("your element is "+tail.getData());
+          System.out.println("your element is "+tail.getData());
             return tail.getData();
         }
-        //System.out.println("element is not exist");
+       System.out.println("element is not exist");
         return null;
 
     }
@@ -77,6 +78,16 @@ package linkedList;
         }
         return false;
     }
+
+    public int size() {
+        if (head==null){
+            System.out.println("no elements");
+            return 0;
+        }int size=this.size;
+       System.out.println("you have "+size+" elements");
+        return size;
+    }
+
 
 
    public void printList(){

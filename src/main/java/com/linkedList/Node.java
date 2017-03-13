@@ -1,4 +1,4 @@
-package linkedList;
+package com.linkedList;
 
 /**
  * Created by Грам on 07.03.2017.
