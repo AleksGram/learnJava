@@ -21,12 +21,14 @@ public class Album {
     }
 
     public int songExist(String songTitle) {
-        for (int i = 0; i < this.songs.size(); i++) {
-            if (songTitle.equals(this.songs.get(i).getTitle())) {
+       for (int i = 0; i < this.songs.size(); i++) {
+           //for (Song checkSong: this.songs) alternative loop
+
+               if (songTitle.equals(this.songs.get(i).getTitle())) {
                 return i;
             }
         }
-        return -1;
+             return -1;
     }
 
     public boolean addSongToAlbum(String songTitle){
@@ -34,7 +36,7 @@ public class Album {
             System.out.println("Can't execute! "+songTitle+" already exist...");
             return false;
         }else{
-            songs.add(new Song(songTitle));
+            this.songs.add(new Song(songTitle));
             System.out.println(songTitle+" was added to "+this.getAlbumName());
         }
         return true;

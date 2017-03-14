@@ -14,7 +14,7 @@ public class PlayList {
 
     public static void main(String[] args) {
 
-      Album album1 = new Album("First album");
+      playList.Album album1 = new Album("First album");
         Album album2 = new Album("Second album");
         album1.addSongToAlbum("Love");
         album1.addSongToAlbum("Heart");
@@ -30,7 +30,7 @@ public class PlayList {
         System.out.println(myAlbums.songExistInAlbums("Love"));*/
       LinkedList<String> playList = new LinkedList<String>();
         PlayList playList1=new PlayList();
-        Albums myAlbums = new Albums();
+        playList.Albums myAlbums = new playList.Albums();
         playList1.addInOrder(playList,"Love",album1);
         playList1.addInOrder(playList,"Heart",album1);
         playList1.addInOrder(playList,"Sweet",album1);
