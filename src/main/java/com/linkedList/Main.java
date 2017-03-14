@@ -1,5 +1,7 @@
 package com.linkedList;
 
+import java.util.Comparator;
+
 /**
  * Created by Грам on 07.03.2017.
  */
@@ -22,6 +24,11 @@ public class Main {
         list.printList();
 
 
+new Comparator() {
+    public int compare(Object o1, Object o2) {
+        return 0;
+    }
 
+};
     }
 }
