@@ -28,7 +28,7 @@ public class PlayList {
         myAlbums.addAlbum(album1.getAlbumName());
         myAlbums.addAlbum(album2.getAlbumName());
         System.out.println(myAlbums.songExistInAlbums("Love"));*/
-      LinkedList<String> playList = new LinkedList<String>();
+      LinkedList<Song> playList = new LinkedList<Song>();
         PlayList playList1=new PlayList();
         playList.Albums myAlbums = new playList.Albums();
         playList1.addInOrder(playList,"Love",album1);
@@ -60,24 +60,24 @@ public class PlayList {
 
     }
 
-    public static boolean addInOrder(LinkedList<String> songs, String songName, Album album) {
+    public static boolean addInOrder(LinkedList<Song> songs, String songName, Album album) {
         if (album.songExist(songName)>=0) {
-            ListIterator<String> songListIterator = songs.listIterator();
+            ListIterator<Song> songListIterator = songs.listIterator();
             while (songListIterator.hasNext()) {
-                int comparison = songListIterator.next().compareTo(songName);
+                int comparison = songListIterator.next().getTitle().compareTo(songName);
                 if (comparison == 0) {
                     System.out.println("Can't execute, song already exist");
                     return false;
                 } else if (comparison > 0) {
                     songListIterator.previous();
-                    songListIterator.add(songName);
+                    songListIterator.add(new Song(songName));
                     System.out.println("added " + songName + " to playlist");
                     return true;
                 } else if (comparison < 0) {
 
                 }
             }
-            songListIterator.add(songName);
+            songListIterator.add(new Song(songName));
             System.out.println("added " + songName + " to playlist");
             return true;
         }else
@@ -101,22 +101,22 @@ public class PlayList {
         return false;
     }
 
-    public void showPlaylist(LinkedList<String> songs) {
-        Iterator<String> i = songs.iterator();
+    public void showPlaylist(LinkedList<Song> songs) {
+        Iterator<Song> i = songs.iterator();
         while (i.hasNext()) {
-            System.out.println(i.next());
+            System.out.println(i.next().toString());
         }
         System.out.println("=============================");
     }
 
-    public void playSong(LinkedList<String>songs) {
+    public void playSong(LinkedList<Song>songs) {
         boolean quit=false;
         boolean goForward=true;
-        ListIterator<String> songListIterator = songs.listIterator();
+        ListIterator<Song> songListIterator = songs.listIterator();
         if (songs.isEmpty()) {
             System.out.println("Playlist is empty...");
         } else {
-                System.out.println("Now playing " + songListIterator.next());
+                System.out.println("Now playing " + songListIterator.next().toString());
                 printMenu();
             while (!quit) {
                 int action = scanner.nextInt();
@@ -134,7 +134,7 @@ public class PlayList {
                                goForward=true;
                            }
                            if(songListIterator.hasNext()){
-                               System.out.println("Now playing "+songListIterator.next());
+                               System.out.println("Now playing "+songListIterator.next().toString());
                        }else{
                                System.out.println("It's the END of the playlist!");
                                goForward=false;
@@ -154,7 +154,22 @@ public class PlayList {
                             goForward = true;
                         }
                         break;
+                    case 3:
+                        if(!goForward){
+                           // if(songListIterator)
+                        }
                     case 5:
+                        if(songs.size()>0){
+                            System.out.println("Current song was removed");
+                            songListIterator.remove();
+                            if(songListIterator.hasNext()){
+                                System.out.println("Now playing "+songListIterator.next());
+                            }else if(songListIterator.hasPrevious()){
+                                System.out.println("Now playing "+songListIterator.previous());
+                            }
+                        }
+                        break;
+                    case 6:
                         printMenu();
                         break;
                 }
@@ -168,9 +183,11 @@ public class PlayList {
         System.out.println("0 - to quit\n" +
                 "1 -  next track\n" +
                 "2 -  previous track\n" +
-                "3 - skip next ttrack\n"+
-                "4 - skip previous ttrack\n"+
-                "5 - print menu options");
+                "3 - skip next track\n"+
+                "4 - skip previous track\n"+
+                "5 - remove current track\n"+
+                "6 - print menu options");
+
     }
 }
 
