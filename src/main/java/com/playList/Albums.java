@@ -1,8 +1,8 @@
-package playList;
+package com.playList;
 
 import java.util.ArrayList;
 
-import static playList.PlayList.scanner;
+import static com.playList.PlayList.scanner;
 
 
 public class Albums {

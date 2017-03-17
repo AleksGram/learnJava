@@ -1,4 +1,4 @@
-package playList;
+package com.playList;
 
 import java.text.DecimalFormat;
 

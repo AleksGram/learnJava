@@ -1,4 +1,4 @@
-package playList;
+package com.playList;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
@@ -14,7 +14,7 @@ public class PlayList {
 
     public static void main(String[] args) {
 
-      playList.Album album1 = new Album("First album");
+      com.playList.Album album1 = new Album("First album");
         Album album2 = new Album("Second album");
         album1.addSongToAlbum("Love");
         album1.addSongToAlbum("Heart");
@@ -30,7 +30,7 @@ public class PlayList {
         System.out.println(myAlbums.songExistInAlbums("Love"));*/
       LinkedList<Song> playList = new LinkedList<Song>();
         PlayList playList1=new PlayList();
-        playList.Albums myAlbums = new playList.Albums();
+        com.playList.Albums myAlbums = new com.playList.Albums();
         playList1.addInOrder(playList,"Love",album1);
         playList1.addInOrder(playList,"Heart",album1);
         playList1.addInOrder(playList,"Sweet",album1);
@@ -43,14 +43,14 @@ public class PlayList {
 
        // myAlbums.createAlbum("My First Album").printListOfSongs();
        // myAlbums.addAlbum("My First Album");
-       // playList1.addInOrder(playList,"Love",myAlbums.createAlbum("MyFirstAlbum"));
-      /*  playList1.addInOrder(playList,"Love",album1);
-        playList1.addInOrder(playList,"Done",album1);
-        playList1.addInOrder(playList,"Albret",album2);
-        playList1.addInOrder(playList,"Bike",album2);
-        playList1.showPlaylist(playList);
-        playList1.removeSong(playList,"Done");
-        playList1.showPlaylist(playList);*/
+       // playList1.addInOrder(com.playList,"Love",myAlbums.createAlbum("MyFirstAlbum"));
+      /*  playList1.addInOrder(com.playList,"Love",album1);
+        playList1.addInOrder(com.playList,"Done",album1);
+        playList1.addInOrder(com.playList,"Albret",album2);
+        playList1.addInOrder(com.playList,"Bike",album2);
+        playList1.showPlaylist(com.playList);
+        playList1.removeSong(com.playList,"Done");
+        playList1.showPlaylist(com.playList);*/
        /*
 
         myAlbums.createAlbum("My Second Album").printListOfSongs();
