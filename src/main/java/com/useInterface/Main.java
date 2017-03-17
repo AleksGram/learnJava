@@ -8,6 +8,16 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+Car honda = new Car("Prelude",220, 200);
+        System.out.println(honda.toString());
+        savedObject(honda);
+
+        honda.setHorsPower(250);
+        System.out.println(honda);
+        honda.setColor("white");
+        savedObject(honda);
+        loadObject(honda);
+        System.out.println(honda);
 
     }
 
@@ -23,6 +33,7 @@ public class Main {
         while (!quite){
             System.out.println("Choise the option: ");
             int choise = scanner.nextInt();
+            scanner.nextLine();
             switch (choise){
                 case 0:
                     quite=true;
@@ -46,5 +57,6 @@ public class Main {
 
     public static void loadObject(IStorage objectForLoading){
         ArrayList<String> values = readValues();
+        objectForLoading.read(values);
     }
 }
