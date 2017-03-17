@@ -2,19 +2,20 @@ package com.playList;
 
 import java.text.DecimalFormat;
 
-/**
- * Created by Грам on 05.03.2017.
- */
+
 public class Song {
 
    private String title;
-   private  double duration;
+   private String duration;
 
 
     public Song(String title) {
         this.title = title;
-        this.duration=Math.random();
-        this.duration=Double.parseDouble(new DecimalFormat("##.##").format(duration));
+        DecimalFormat value = new DecimalFormat("#.##");
+        this.duration=value.format(Math.random());
+
+
+
     }
 
     public String getTitle() {
