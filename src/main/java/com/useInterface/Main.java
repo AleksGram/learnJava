@@ -16,8 +16,14 @@ Car honda = new Car("Prelude",220, 200);
         System.out.println(honda);
         honda.setColor("white");
         savedObject(honda);
-        loadObject(honda);
+       // loadObject(honda);
         System.out.println(honda);
+
+        IStorage yamaha = new Bike("Yr-Z", 120, 200);
+        System.out.println("Max speed= "+((Bike) yamaha).getMaxSpeed());
+        savedObject(yamaha);
+        System.out.println(yamaha);
+
 
     }
 
