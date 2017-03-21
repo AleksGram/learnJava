@@ -3,16 +3,14 @@ package com.useInterface;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Created by agra on 3/17/2017.
- */
+
 public class Main {
     public static void main(String[] args) {
 Car honda = new Car("Prelude",220, 200);
         System.out.println(honda.toString());
         savedObject(honda);
 
-        honda.setHorsPower(250);0
+        honda.setHorsPower(250);
         System.out.println(honda);
         honda.setColor("white");
         savedObject(honda);
