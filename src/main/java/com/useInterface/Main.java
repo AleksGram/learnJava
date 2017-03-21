@@ -12,7 +12,7 @@ Car honda = new Car("Prelude",220, 200);
         System.out.println(honda.toString());
         savedObject(honda);
 
-        honda.setHorsPower(250);
+        honda.setHorsPower(250);0
         System.out.println(honda);
         honda.setColor("white");
         savedObject(honda);
