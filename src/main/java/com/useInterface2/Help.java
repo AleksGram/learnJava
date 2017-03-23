@@ -15,6 +15,6 @@ public class Help implements Command {
     }
 
     public void execute() {
-        System.out.println(getHello());
+        System.out.println(getHello()); //git check
     }
 }
