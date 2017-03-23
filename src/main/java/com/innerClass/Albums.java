@@ -46,14 +46,14 @@ public class Albums {
         for (int i = 0; i < quantityOfSongs; i++) {
             System.out.println("Type the name of the " + (i + 1) + " song:");
             String songName = scanner.nextLine();
-            newAlbum.getSongs().addSong(albumName);
+            newAlbum.addSong(albumName);
         }
         return newAlbum;
     }
 
     public boolean songExistInAlbums(String songName) {
         for (int i = 0; i < albums.size(); i++) {
-            if (albums.get(i).getSongs().findSong(songName) >= 0) {
+            if (albums.get(i).findSong(songName) >= 0) {
                 return true;
             }
         }

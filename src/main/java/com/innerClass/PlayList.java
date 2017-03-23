@@ -14,24 +14,24 @@ public class PlayList {
 
     public static void main(String[] args) {
 
-      Album album1 = new Album("First album");
+     Album album1 = new Album("First album");
         Album album2 = new Album("Second album");
-        album1.getSongs().addSong("Love");
-        album1.getSongs().addSong("Heart");
-        album1.getSongs().addSong("Sweet");
+        album1.addSong("Love");
+        album1.addSong("Heart");
+        album1.addSong("Sweet");
 
-        album1.getSongs().addSong("Car");
-        album1.getSongs().addSong("Bike");
-        album1.getSongs().addSong("Track");
+        album1.addSong("Car");
+        album1.addSong("Bike");
+        album1.addSong("Track");
 
-      /*  Albums myAlbums = new Albums();
+        Albums myAlbums = new Albums();
         myAlbums.addAlbum(album1.getAlbumName());
         myAlbums.addAlbum(album2.getAlbumName());
-        System.out.println(myAlbums.songExistInAlbums("Love"));*/
+        System.out.println(myAlbums.songExistInAlbums("Love"));
       LinkedList<Song> playList = new LinkedList<Song>();
         PlayList playList1=new PlayList();
-        Albums myAlbums = new Albums();
-        playList1.addInOrder(playList,"Love",album1);
+      //  Albums myAlbums = new Albums();
+       playList1.addInOrder(playList,"Love",album1);
         playList1.addInOrder(playList,"Heart",album1);
         playList1.addInOrder(playList,"Sweet",album1);
         playList1.addInOrder(playList,"Car",album1);
@@ -41,27 +41,35 @@ public class PlayList {
         playList1.showPlaylist(playList);
         playList1.playSong(playList);
 
-       // myAlbums.createAlbum("My First Album").printListOfSongs();
-       // myAlbums.addAlbum("My First Album");
-       // playList1.addInOrder(com.playList,"Love",myAlbums.createAlbum("MyFirstAlbum"));
-      /*  playList1.addInOrder(com.playList,"Love",album1);
-        playList1.addInOrder(com.playList,"Done",album1);
-        playList1.addInOrder(com.playList,"Albret",album2);
-        playList1.addInOrder(com.playList,"Bike",album2);
-        playList1.showPlaylist(com.playList);
-        playList1.removeSong(com.playList,"Done");
-        playList1.showPlaylist(com.playList);*/
-       /*
+       /* Album album1 = new Album("First album");
+        Album album2 = new Album("Second album");
+       Albums myAlbums = new Albums();
+       LinkedList<Song> playList = new LinkedList<Song>();
+       PlayList playList1=new PlayList();
+        playList1.showPlaylist(playList);
+        playList1.playSong(playList);
+
+        myAlbums.createAlbum("My First Album").printListOfSongs();
+        myAlbums.addAlbum("My First Album");
+        playList1.addInOrder(playList,"Love",myAlbums.createAlbum("MyFirstAlbum"));
+        playList1.addInOrder(playList,"Love",album1);
+        playList1.addInOrder(playList,"Done",album1);
+        playList1.addInOrder(playList,"Albret",album2);
+        playList1.addInOrder(playList,"Bike",album2);
+        playList1.showPlaylist(playList);
+        playList1.removeSong(playList,"Done");
+        playList1.showPlaylist(playList);
+
 
         myAlbums.createAlbum("My Second Album").printListOfSongs();
-        myAlbums.createAlbum("My Third Album").printListOfSongs();
-*/
+        myAlbums.createAlbum("My Third Album").printListOfSongs();*/
+
 
 
     }
 
     public static boolean addInOrder(LinkedList<Song> songs, String songName, Album album) {
-        if (album.getSongs().findSong(songName)>=0) {
+        if (album.findSong(songName)>=0) {
             ListIterator<Song> songListIterator = songs.listIterator();
             while (songListIterator.hasNext()) {
                 int comparison = songListIterator.next().getTitle().compareTo(songName);
@@ -86,10 +94,10 @@ public class PlayList {
     }
 
 
-    public static boolean removeSong(LinkedList<String> songs, String songName) {
-        ListIterator<String> songListIterator = songs.listIterator();
+    public static boolean removeSong(LinkedList<Song> songs, String songName) {
+        ListIterator<Song> songListIterator = songs.listIterator();
         while (songListIterator.hasNext()) {
-            int comparison = songListIterator.next().compareTo(songName);
+            int comparison = songListIterator.next().getTitle().compareTo(songName);
             if (comparison == 0) {
                 songListIterator.remove();
                 System.out.println(songName + " was removed from playlist");

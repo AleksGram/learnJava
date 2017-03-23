@@ -21,26 +21,37 @@ public class Album {
         return albumName;
     }
 
-    public class SongList {
+    public void addSong(String title){
+        this.songs.addSong(title);
+    }
+    public int findSong(String title){
+        return this.songs.findSong(title);
+    }
+
+    public void printListOfSongs(){
+        this.songs.print();
+    }
+
+    private class SongList {
         private ArrayList<Song> listSongs;
 
         public SongList() {
             this.listSongs = new ArrayList();
         }
 
-        public int findSong(String songTitle) {
+        private int findSong(String songTitle) {
             for (int i = 0; i < listSongs.size(); i++) {
                 if (listSongs.get(i).getTitle().equals(songTitle)) {
                     System.out.println(songTitle + " was finded");
                     return i;
                 }
-                   //System.out.println(songTitle + " not exist");
+
 
             }
             return -1;
         }
 
-        public boolean addSong(String songTitle){
+        private boolean addSong(String songTitle){
             if(findSong(songTitle)==-1){
                 listSongs.add(new Song(songTitle));
                 System.out.println(songTitle+" was added");
@@ -48,6 +59,11 @@ public class Album {
             }else
                 System.out.println("can't add");
             return false;
+        }
+        private void print (){
+            for (int i=0;i<listSongs.size();i++){
+                System.out.println(i+" "+listSongs.get(i).getTitle());
+            }
         }
     }
 }
