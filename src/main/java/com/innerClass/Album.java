@@ -8,12 +8,14 @@ public class Album {
     private String albumName;
     private SongList songs;
 
+
     public Album(String albumName) {
         this.albumName = albumName;
         this.songs = new SongList();
     }
 
     public SongList getSongs() {
+
         return songs;
     }
 
