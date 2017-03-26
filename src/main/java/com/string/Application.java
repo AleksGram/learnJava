@@ -31,7 +31,7 @@ public class Application {
 
 
             } else
-                reppets = 1;
+               reppets = 1;
         }
         System.out.println(string);
     }
