@@ -5,7 +5,7 @@ package com.string;
  */
 public class Application {
     public static void main(String[] args) {
-        StringBuilder string = new StringBuilder("HHhherthhellllll");
+        StringBuilder string = new StringBuilder("hhhhhhhhhhhyy");
         int reppets = 1;
 
         String newString = new String();
@@ -24,15 +24,29 @@ public class Application {
 
             }
             if (reppets > 1) {
-                newString += reppets;
+                int quantity = reppets - 9;
+                if (quantity <= 0) {
+                    newString += reppets;
+                } else {
+                    newString+=9;
+                    while (quantity > 0) {
+                        if (quantity <= 9) {
+                            newString +=(newString+quantity);
+                        } else
+                            newString += 9;
+                        quantity -= 9;
+                    }
+                    // newString+=9;
+                    // quantity-=9;
+                }
+                //  newString += reppets;
                 string.replace(i, (i + reppets), newString);
                 // string=new StringBuilder(newString);
                 reppets = 1;
 
 
-            } else
-               reppets = 1;
+            }
+            System.out.println(string);
         }
-        System.out.println(string);
     }
 }
