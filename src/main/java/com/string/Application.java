@@ -5,8 +5,7 @@ package com.string;
  */
 public class Application {
     public static void main(String[] args) {
-        // StringBuilder string = new StringBuilder("hhhhhhhhhhhhhhhhhhhhyyhhhhhhhhhhhoohh");
-        StringBuilder string = new StringBuilder(null);
+         StringBuilder string = new StringBuilder("hhhhhhhhhhhhhhhhhhhhyyhhhhhhhhhhhoohh");
         int reppets = 1;
 
         String newString = new String();
