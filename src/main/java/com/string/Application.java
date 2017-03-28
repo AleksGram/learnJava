@@ -5,10 +5,12 @@ package com.string;
  */
 public class Application {
     public static void main(String[] args) {
-        StringBuilder string = new StringBuilder("hhhhhhhhhhhyy");
+        // StringBuilder string = new StringBuilder("hhhhhhhhhhhhhhhhhhhhyyhhhhhhhhhhhoohh");
+        StringBuilder string = new StringBuilder(null);
         int reppets = 1;
 
         String newString = new String();
+        String typeString = new String();
         for (int i = 0; i < string.length() - 1; i++) {
             for (int j = (i + 1); j < string.length(); j++) {
                 char ch1 = string.charAt(i);
@@ -16,7 +18,9 @@ public class Application {
 
                 if (ch1 == ch2) {
 
-                    newString = String.valueOf(ch1);
+                    typeString = String.valueOf(ch1);
+
+
                     reppets += 1;
                 } else
                     break;
@@ -26,14 +30,15 @@ public class Application {
             if (reppets > 1) {
                 int quantity = reppets - 9;
                 if (quantity <= 0) {
-                    newString += reppets;
+
+                    newString = typeString + reppets;
                 } else {
-                    newString+=9;
+                    newString = typeString + 9;
                     while (quantity > 0) {
                         if (quantity <= 9) {
-                            newString +=(newString+quantity);
+                            newString += typeString + quantity;
                         } else
-                            newString += 9;
+                            newString += typeString + 9;
                         quantity -= 9;
                     }
                     // newString+=9;
@@ -46,7 +51,8 @@ public class Application {
 
 
             }
-            System.out.println(string);
+
         }
+        System.out.println(string);
     }
 }
