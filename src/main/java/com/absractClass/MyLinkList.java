@@ -12,7 +12,7 @@ public class MyLinkList implements NodeList {
     }
 
     public ListItem getRoot() {
-        return null;
+        return this.root;
     }
 
     public boolean addItem(ListItem item) {
