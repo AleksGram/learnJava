@@ -60,9 +60,19 @@ public class MyLinkList implements NodeList {
                     this.root=currentItem.next();
                 }else{
                     currentItem.previous().setNext(currentItem.next());
+                    if(currentItem.next()!=null){
+                        currentItem.next().setPrevious(currentItem.previous());
+                    }
                 }
+                return true;
+            }else if(comparison<0){
+                currentItem=currentItem.next();
+            }else{
+                System.out.println("Item "+item.getValue()+" is not present in list");
+                return  false;
             }
         }
+        return false;
 
     }
 
