@@ -10,10 +10,14 @@ import java.util.List;
  */
 public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
     private String maker;
-    private List<T> cars = new LinkedList<>();
+    private ArrayList<T> cars = new ArrayList<>();
 
     public Autoconcern(String maker) {
         this.maker = maker;
+    }
+
+    public String getMaker() {
+        return maker;
     }
 
     boolean addCar(T car) {
@@ -21,12 +25,14 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
             System.out.println("Aborted!" + car.getModel() + " is already present in list...  ");
             return false;
         } else {
+
             cars.add(car);
             System.out.println(car.getModel() + " was added to list");
         }
         return true;
 
     }
+
 
     public void print() {
 
@@ -39,12 +45,11 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
         }
     }
 
-
     @Override
-    public int compareTo(Autoconcern<T> cars) {
-if (this.maker>cars.maker){
-    return
-}
-        return 0;
+    public int compareTo(Autoconcern<T> car) {
+        return ((this.maker).compareTo(car.maker));
     }
 }
+
+
+
