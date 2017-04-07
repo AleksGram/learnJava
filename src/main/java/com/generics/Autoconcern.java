@@ -32,15 +32,14 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
         return true;
 
     }
-    public String carInfo(){
-        String modeName=null;
-        for (int i=0;i<cars.size();i++){
-           modeName= cars.get(i).getModel();
-
-        }
-        return modeName;
+   /* public String getcarModel(Car car){
+            return car.getModel();
+    }*/
+public void carInfo(){
+    for(int i=0;i<this.cars.size();i++){
+        System.out.println(cars.get(i).getModel());
     }
-
+}
 
     public void print() {
 
@@ -55,7 +54,7 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
 
     @Override
     public int compareTo(Autoconcern<T> car) {
-        car.
+
         return ((this.maker).compareTo(car.maker));
     }
 }
