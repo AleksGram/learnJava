@@ -28,7 +28,7 @@ public String toString(T car){
     public void showCars(){
         Collections.sort(garage);
         for(T car:garage){
-            System.out.println(toString(car));
+            System.out.println(car.carInfo());
         }
     }
 }
