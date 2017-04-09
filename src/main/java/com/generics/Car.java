@@ -18,9 +18,7 @@ public class Car {
         this.horsePower = horsePower;
     }
 
-  /*  public String getMaker() {
-        return maker;
-    }*/
+
 
     public String getModel() {
         return model;

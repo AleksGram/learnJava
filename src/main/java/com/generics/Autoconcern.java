@@ -5,9 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by agra on 4/4/2017.
- */
+
 public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
     private String maker;
     private ArrayList<T> cars = new ArrayList<>();
@@ -15,6 +13,7 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
     public Autoconcern(String maker) {
         this.maker = maker;
     }
+    abstract void subCompaire (Car car);
 
     public String getMaker() {
         return maker;
@@ -32,9 +31,7 @@ public class Autoconcern<T extends Car> implements Comparable<Autoconcern<T>> {
         return true;
 
     }
-   /* public String getcarModel(Car car){
-            return car.getModel();
-    }*/
+
 public void carInfo(){
     for(int i=0;i<this.cars.size();i++){
         System.out.println(cars.get(i).getModel());
