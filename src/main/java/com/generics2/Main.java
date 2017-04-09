@@ -14,9 +14,20 @@ public class Main {
         Toyota supra = new Toyota("Supra", 250, 3.0);
 
         Garage<Honda> g1 = new Garage<>("Hall");
+        g1.addCar(integra);
         g1.addCar(accord);
         g1.addCar(civic);
-        g1.addCar(integra);
+
+    g1.showCar();
+     /* Garage<Toyota>g2=new Garage<>("Hall2");
+      g2.addCar(celica);
+      g2.addCar(corolla);
+      g2.addCar(supra);
+      g2.showCars();
+
+      ShowCar<Garage>show=new ShowCar<>("show");
+      show.addCar(g1);
+      show.showCar();*/
 
 
     }
