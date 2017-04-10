@@ -3,7 +3,7 @@ package com.generics2;
 /**
  * Created by Грам on 09.04.2017.
  */
-public class Car {
+public class Car implements Comparable<Car> {
     private String model;
     private int horspower;
    private double engineVolume;
@@ -26,4 +26,8 @@ public class Car {
         return engineVolume;
     }
 
+    @Override
+    public int compareTo(Car car) {
+        return this.model.compareTo(car.model);
+    }
 }

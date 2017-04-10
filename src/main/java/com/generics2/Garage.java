@@ -1,15 +1,11 @@
 package com.generics2;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
-/**
- * Created by Грам on 09.04.2017.
- */
-public class Garage<T extends Car> implements Comparable<T> {
+
+public class Garage<T extends Car> {
     private String name;
-    private ArrayList<T> cars = new ArrayList<>();
+    private TreeSet<T> cars = new TreeSet<>();
 
     public Garage(String name) {
         this.name = name;
@@ -22,20 +18,12 @@ public class Garage<T extends Car> implements Comparable<T> {
         } else cars.add(car);
         return true;
     }
-    public void showCar(){
-        for (T car:cars){
+
+    public void showCar() {
+        for (T car : cars) {
             System.out.println(car.getModel());
         }
     }
 
-    @Override
-    public int compareTo(T newCar) {
-        int comparisson = 0;
-        for (T car : cars) {
-            comparisson = car.getModel().compareTo(newCar.getModel());
-        }
-        return comparisson;
-    }
 }
-
 
