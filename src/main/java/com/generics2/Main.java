@@ -1,5 +1,7 @@
 package com.generics2;
 
+import com.fibonachi.Fibonachi;
+
 /**
  * Created by Грам on 09.04.2017.
  */
