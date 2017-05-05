@@ -17,7 +17,7 @@ public class Main {
         map.get(5);
         map.get(1);
         System.out.println(map);
-        SimpleLRUCashe newMap = new SimpleLRUCashe(2);
+        SimpleLRUCashe<Integer, String> newMap = new SimpleLRUCashe<>(2);
         // we set the size of the cash = 2,
         // so when you'll add the 3-rd element, the element wich used more less will be deleted
         newMap.put(1, "a");
