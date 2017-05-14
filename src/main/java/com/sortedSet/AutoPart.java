@@ -14,6 +14,12 @@ public class AutoPart implements Comparable<AutoPart> {
         this.quantityPart =0;
     }
 
+    public AutoPart(String name, double prise, int quantityPart) {
+        this.name = name;
+        this.prise = prise;
+        this.quantityPart =quantityPart;
+    }
+
     public String getName() {
         return name;
     }
