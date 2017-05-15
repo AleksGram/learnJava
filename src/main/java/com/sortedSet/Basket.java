@@ -3,6 +3,7 @@ package com.sortedSet;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Basket {
@@ -11,7 +12,7 @@ public class Basket {
 
     public Basket(String name) {
         this.name = name;
-        this.list =new HashMap<>();
+        this.list =new TreeMap<>();
     }
 
     public int addToBasket(AutoPart part, int quantity){
@@ -26,6 +27,7 @@ public class Basket {
         public Map<AutoPart, Integer> items(){
         return Collections.unmodifiableMap(list);
         }
+
     @Override
     public String toString() {
         String s = "\nShopping basket " + name + " contains " + list.size() + " parts\n";
@@ -34,7 +36,7 @@ public class Basket {
             s = s + part.getKey() + ". " + part.getValue() + " purchased\n";
             totalCost += part.getKey().getPrise() * part.getValue();
         }
-        return s + "Total cost " + totalCost;
+        return s + "Total cost " + String.format("%.2f",totalCost);
     }
 
     }

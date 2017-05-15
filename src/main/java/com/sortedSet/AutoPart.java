@@ -57,6 +57,7 @@ public class AutoPart implements Comparable<AutoPart> {
 
     @Override
     public int compareTo(AutoPart o) {
+        System.out.println("Comparing.....");
         if(this==o){
             return 0;
         }

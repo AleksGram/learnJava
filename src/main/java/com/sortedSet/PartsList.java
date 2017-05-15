@@ -1,18 +1,18 @@
 package com.sortedSet;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 
 public class PartsList {
     private final Map<String, AutoPart> list;
 
     public PartsList() {
-        this.list=new TreeMap<>();
+        this.list=new LinkedHashMap<>();
     }
 
     public int addParts(AutoPart part){
