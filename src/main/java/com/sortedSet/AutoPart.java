@@ -4,6 +4,7 @@ package com.sortedSet;
  * Created by Грам on 13.05.2017.
  */
 public class AutoPart implements Comparable<AutoPart> {
+    //check git repository
      private final String name;
     private double prise;
     private int quantityPart;
