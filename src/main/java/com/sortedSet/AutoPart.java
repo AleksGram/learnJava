@@ -8,11 +8,13 @@ public class AutoPart implements Comparable<AutoPart> {
      private final String name;
     private double prise;
     private int quantityPart;
+    private int reserveParts;
 
     public AutoPart(String name, double prise) {
         this.name = name;
         this.prise = prise;
         this.quantityPart =0;
+        this.reserveParts=0;
     }
 
     public AutoPart(String name, double prise, int quantityPart) {
@@ -37,10 +39,21 @@ public class AutoPart implements Comparable<AutoPart> {
         return quantityPart;
     }
 
+    public int getReserveParts() {
+        return reserveParts;
+    }
+
     public void adjustQuantity(int quantity) {
         int newQuantity=this.quantityPart + quantity;
         if(newQuantity>=0){
             this.quantityPart=newQuantity;
+        }
+    }
+
+    public void adjustReaerveParts(int quantity) {
+        int newReserve=this.reserveParts + quantity;
+        if(newReserve>=0&&newReserve<=this.getQuantityPart()){
+            this.reserveParts=newReserve;
         }
     }
 
