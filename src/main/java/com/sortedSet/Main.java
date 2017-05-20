@@ -1,5 +1,7 @@
 package com.sortedSet;
 
+import java.util.Map;
+
 /**
  * Created by Грам on 14.05.2017.
  */
@@ -32,12 +34,16 @@ public class Main {
 
         Basket myBasket =new Basket("My basket");
 
-        sell(myBasket,"Roots", 1);
-        sell(myBasket,"Roots", 1);
+
+         sell(myBasket,"Roots", 1);
+       sell(myBasket,"Roots", 1);
         sell(myBasket,"Valve", 23);
-        sell(myBasket,"Turbo", 5);
+        sell(myBasket,"Turbo", 4);
+        sell(myBasket,"Turbo", 1);
         sell(myBasket,"Pistone", 10);
         sell(myBasket,"Air Filter", 10);
+        sell(myBasket,"Verto", 5);
+
 
         System.out.println(myBasket);
 
@@ -63,13 +69,32 @@ public class Main {
             System.out.println("The " + autoPart + " is absent in stock");
             return 0;
         }
-        if (partsList.sellPart(autoPart, quantity) > 0) {
-            basket.addToBasket(part, quantity);
-            return quantity;
+        if (partsList.reservePart(autoPart, quantity) > 0) {
+            return basket.addToBasket(part,quantity);
 
         }
         System.out.println("No more "+autoPart+ " in stock");
         return 0;
 
+    }
+
+    public static int removePart(Basket basket, String autoPart, int quantity) {
+        AutoPart part = partsList.get(autoPart);
+        if (part == null) {
+            System.out.println("The " + autoPart + " is absent in stock");
+            return 0;
+        }
+        if (basket.removeFromBasket(part, quantity) == quantity) {
+            return partsList.unreservePart(autoPart,quantity);
+        }
+        return 0;
+
+    }
+
+    public static void checkOut(Basket basket){
+        for(Map.Entry<AutoPart,Integer> item: basket.items().entrySet()){
+            partsList.sellPart(item.getKey().getName(),item.getValue());
+        }
+        basket.cleanBasket();
     }
 }

@@ -5,22 +5,22 @@ package com.sortedSet;
  */
 public class AutoPart implements Comparable<AutoPart> {
     //check git repository
-     private final String name;
+    private final String name;
     private double prise;
-    private int quantityPart;
-    private int reserveParts;
+    private int partQuantity;
+    private int partReserve;
 
     public AutoPart(String name, double prise) {
         this.name = name;
         this.prise = prise;
-        this.quantityPart =0;
-        this.reserveParts=0;
+        this.partQuantity = 0;
+        this.partReserve = 0;
     }
 
     public AutoPart(String name, double prise, int quantityPart) {
         this.name = name;
         this.prise = prise;
-        this.quantityPart =quantityPart;
+        this.partQuantity = quantityPart;
     }
 
     public String getName() {
@@ -35,60 +35,79 @@ public class AutoPart implements Comparable<AutoPart> {
         this.prise = prise;
     }
 
-    public int getQuantityPart() {
-        return quantityPart;
+    public int getAvaliablePartQuantity() {
+        return partQuantity - partReserve;
     }
 
-    public int getReserveParts() {
-        return reserveParts;
+    public int getPartReserve() {
+        return partReserve;
     }
 
     public void adjustQuantity(int quantity) {
-        int newQuantity=this.quantityPart + quantity;
-        if(newQuantity>=0){
-            this.quantityPart=newQuantity;
+        int newQuantity = this.partQuantity + quantity;
+        if (newQuantity >= 0) {
+            this.partQuantity = newQuantity;
         }
     }
 
-    public void adjustReaerveParts(int quantity) {
-        int newReserve=this.reserveParts + quantity;
-        if(newReserve>=0&&newReserve<=this.getQuantityPart()){
-            this.reserveParts=newReserve;
+    public int reaerveParts(int quantity) {
+        if (quantity <= this.getAvaliablePartQuantity()) {
+            this.partReserve += quantity;
+            return quantity;
         }
+        return 0;
+    }
+
+    public int unReservePart(int quantity) {
+        if (quantity <= this.partReserve) {
+            this.partReserve -= quantity;
+            return quantity;
+        }
+        System.out.println("You hadn't reserved " + quantity);
+        return 0;
+    }
+
+    public int finalisePart(int quantity) {
+        if (quantity <= partReserve) {
+            partQuantity -= quantity;
+            partReserve -= quantity;
+            return quantity;
+        }
+        return 0;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj==this){
+        if (obj == this) {
             return true;
         }
-        if((obj==null)||(obj.getClass()!=this.getClass())){
+        if ((obj == null) || (obj.getClass() != this.getClass())) {
             return false;
         }
-        String objName = ((AutoPart)obj).getName();
+        String objName = ((AutoPart) obj).getName();
         return this.name.equals(objName);
     }
 
     @Override
     public int compareTo(AutoPart o) {
         System.out.println("Comparing.....");
-        if(this==o){
+        if (this == o) {
             return 0;
         }
-        if(o!=null){
+        if (o != null) {
             return this.name.compareTo(o.getName());
         }
-        throw new  NullPointerException();
+        throw new NullPointerException();
 
     }
 
     @Override
     public int hashCode() {
-        return this.name.hashCode()+31;
+        return this.name.hashCode() + 31;
     }
 
     @Override
     public String toString() {
-        return this.name +" price: "+this.prise;
+        return this.name + " price: " + this.prise + "  Reserved " + this.partReserve;
     }
 }
