@@ -27,7 +27,7 @@ public class Basket {
     public int removeFromBasket(AutoPart part, int quantity) {
         if ((part != null) && (quantity > 0)) {
             int inBasket = list.getOrDefault(part, 0);
-            int newQuantity = inBasket + quantity;
+            int newQuantity = inBasket - quantity;
             if (newQuantity > 0) {
                 list.put(part, newQuantity);
                 return newQuantity;

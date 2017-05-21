@@ -32,11 +32,13 @@ public class Main {
         temp = new AutoPart("Air Filter", 11.2, 10);
         partsList.addParts(temp);
 
+        AutoPart engine = new AutoPart("Engine", 500);
+        partsList.addParts(engine);
+
         Basket myBasket =new Basket("My basket");
 
 
-         sell(myBasket,"Roots", 1);
-       sell(myBasket,"Roots", 1);
+        sell(myBasket,"Roots", 3);
         sell(myBasket,"Valve", 23);
         sell(myBasket,"Turbo", 4);
         sell(myBasket,"Turbo", 1);
@@ -44,10 +46,13 @@ public class Main {
         sell(myBasket,"Air Filter", 10);
         sell(myBasket,"Verto", 5);
 
-
         System.out.println(myBasket);
 
         System.out.println(partsList);
+
+        checkOut(myBasket);
+
+        System.out.println(myBasket);
 
   // Invoke UnsupportedOperation Exception
 
@@ -73,7 +78,7 @@ public class Main {
             return basket.addToBasket(part,quantity);
 
         }
-        System.out.println("No more "+autoPart+ " in stock");
+        System.out.println("No such quantity "+autoPart+ " in stock");
         return 0;
 
     }
