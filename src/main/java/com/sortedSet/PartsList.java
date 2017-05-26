@@ -13,6 +13,7 @@ public class PartsList {
         this.list = new LinkedHashMap<>();
     }
 
+
     public int addParts(AutoPart part) {
         if (part != null) {
             AutoPart inStock = list.getOrDefault(part.getName(), part);

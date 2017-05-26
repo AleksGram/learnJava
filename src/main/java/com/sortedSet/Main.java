@@ -1,5 +1,7 @@
 package com.sortedSet;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Map;
 public class Main {
     private static PartsList partsList = new PartsList();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AutoPart temp = new AutoPart("Wheel", 100, 4);
         partsList.addParts(temp);
 
@@ -37,6 +39,9 @@ public class Main {
 
         Basket myBasket =new Basket("My basket");
 
+
+        FileWriter writer = new FileWriter("C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
+        writer.write(engine.toString());
 
         sell(myBasket,"Roots", 3);
         sell(myBasket,"Valve", 23);
