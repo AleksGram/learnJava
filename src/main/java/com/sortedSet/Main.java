@@ -11,7 +11,7 @@ import java.util.Map;
 public class Main {
     private static PartsList partsList = new PartsList();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AutoPart temp = new AutoPart("Wheel", 100, 4);
         partsList.addParts(temp);
 
@@ -40,7 +40,11 @@ public class Main {
 
         Basket myBasket = new Basket("My basket");
 
-        FileWriter locFile = null;
+        try (FileWriter locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt")) {
+            locFile.write(partsList.items().entrySet().toString() + "\n");
+        }
+
+      /*  FileWriter locFile = null;
         try {
             locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
             locFile.write(partsList.items().entrySet().toString() + "\n");
@@ -59,7 +63,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-
+*/
 
         sell(myBasket, "Roots", 3);
         sell(myBasket, "Valve", 23);
