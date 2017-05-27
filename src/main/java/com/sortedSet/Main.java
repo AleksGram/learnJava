@@ -1,5 +1,6 @@
 package com.sortedSet;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
 public class Main {
     private static PartsList partsList = new PartsList();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         AutoPart temp = new AutoPart("Wheel", 100, 4);
         partsList.addParts(temp);
 
@@ -37,19 +38,36 @@ public class Main {
         AutoPart engine = new AutoPart("Engine", 500);
         partsList.addParts(engine);
 
-        Basket myBasket =new Basket("My basket");
+        Basket myBasket = new Basket("My basket");
+
+        FileWriter locFile = null;
+        try {
+            locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
+            locFile.write(partsList.items().entrySet().toString() + "\n");
+
+        } catch (IOException e) {
+            System.out.println("In the cathc block");
+            e.printStackTrace();
+        } finally {
+            System.out.println("in finally block");
+            try {
+                if(locFile!=null) {
+                    System.out.println("closing locFile");
+                    locFile.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
-        FileWriter writer = new FileWriter("C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
-        writer.write(engine.toString());
-
-        sell(myBasket,"Roots", 3);
-        sell(myBasket,"Valve", 23);
-        sell(myBasket,"Turbo", 4);
-        sell(myBasket,"Turbo", 1);
-        sell(myBasket,"Pistone", 10);
-        sell(myBasket,"Air Filter", 10);
-        sell(myBasket,"Verto", 5);
+        sell(myBasket, "Roots", 3);
+        sell(myBasket, "Valve", 23);
+        sell(myBasket, "Turbo", 4);
+        sell(myBasket, "Turbo", 1);
+        sell(myBasket, "Pistone", 10);
+        sell(myBasket, "Air Filter", 10);
+        sell(myBasket, "Verto", 5);
 
         System.out.println(myBasket);
 
@@ -59,7 +77,7 @@ public class Main {
 
         System.out.println(myBasket);
 
-  // Invoke UnsupportedOperation Exception
+        // Invoke UnsupportedOperation Exception
 
        /*  temp=new AutoPart("Turbo",23);
         partsList.items().put(temp.getName(),temp);
@@ -80,10 +98,10 @@ public class Main {
             return 0;
         }
         if (partsList.reservePart(autoPart, quantity) > 0) {
-            return basket.addToBasket(part,quantity);
+            return basket.addToBasket(part, quantity);
 
         }
-        System.out.println("No such quantity "+autoPart+ " in stock");
+        System.out.println("No such quantity " + autoPart + " in stock");
         return 0;
 
     }
@@ -95,15 +113,15 @@ public class Main {
             return 0;
         }
         if (basket.removeFromBasket(part, quantity) == quantity) {
-            return partsList.unreservePart(autoPart,quantity);
+            return partsList.unreservePart(autoPart, quantity);
         }
         return 0;
 
     }
 
-    public static void checkOut(Basket basket){
-        for(Map.Entry<AutoPart,Integer> item: basket.items().entrySet()){
-            partsList.sellPart(item.getKey().getName(),item.getValue());
+    public static void checkOut(Basket basket) {
+        for (Map.Entry<AutoPart, Integer> item : basket.items().entrySet()) {
+            partsList.sellPart(item.getKey().getName(), item.getValue());
         }
         basket.cleanBasket();
     }
