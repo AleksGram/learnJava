@@ -39,9 +39,13 @@ public class Main {
         partsList.addParts(engine);
 
         Basket myBasket = new Basket("My basket");
+        String homePath="D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt";
+        String workPath="C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\basket.txt";
 
-        try (FileWriter locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt")) {
+        try (FileWriter locFile = new FileWriter(workPath);
+        FileWriter baskFile =new FileWriter(workPath)) {
             locFile.write(partsList.items().entrySet().toString() + "\n");
+            baskFile.write(myBasket.toString()+"" +"\n");
         }
 
       /*  FileWriter locFile = null;
