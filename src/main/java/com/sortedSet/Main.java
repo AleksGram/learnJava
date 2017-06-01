@@ -42,8 +42,8 @@ public class Main {
         String homePath="D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt";
         String workPath="C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\basket.txt";
 
-        try (FileWriter locFile = new FileWriter(workPath);
-        FileWriter baskFile =new FileWriter(workPath)) {
+        try (FileWriter locFile = new FileWriter(homePath);
+        FileWriter baskFile =new FileWriter(homePath)) {
             locFile.write(partsList.items().entrySet().toString() + "\n");
             baskFile.write(myBasket.toString()+"" +"\n");
         }
