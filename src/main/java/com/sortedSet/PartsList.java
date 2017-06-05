@@ -78,7 +78,7 @@ public class PartsList {
             double partValue = autoPart.getPrise() * autoPart.getAvaliablePartQuantity();
 
             s = s + autoPart + ". There are " + autoPart.getAvaliablePartQuantity() + " in stock. Value of parts: ";
-            s = s + String.format("%.2f", partValue) + "\n";
+            s = s + String.format("%.2f", partValue) + "."+"\n";
             totalCost += partValue;
         }
         return s + " Total stock value " + totalCost;
