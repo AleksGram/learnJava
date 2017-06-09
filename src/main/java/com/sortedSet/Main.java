@@ -44,15 +44,15 @@ public class Main {
         String homePath="D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt";
         String workPath="C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\basket.txt";
 
-        try (FileWriter locFile = new FileWriter(homePath);
-        FileWriter baskFile =new FileWriter(homePath)) {
+        try (FileWriter locFile = new FileWriter(workPath);
+        FileWriter baskFile =new FileWriter(workPath)) {
             locFile.write(partsList.toString());
             baskFile.write(myBasket.toString()+"" +"\n");
         }
 
 
 
-      /*  FileWriter locFile = null;
+        FileWriter locFile = null;
         try {
             locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
             locFile.write(partsList.items().entrySet().toString() + "\n");
@@ -71,7 +71,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
-*/
 
         sell(myBasket, "Roots", 3);
         sell(myBasket, "Valve", 23);
@@ -100,7 +99,7 @@ public class Main {
         /*   for (String s : partsList.items().keySet()) {
             System.out.println(s);
         }*/
-        try(Scanner scanner = new Scanner(new BufferedReader(new FileReader(homePath)))){
+        try(Scanner scanner = new Scanner(new BufferedReader(new FileReader(workPath)))){
             scanner.useDelimiter(":");
             while (scanner.hasNext()){
                 String name = scanner.next();
