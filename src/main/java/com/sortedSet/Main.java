@@ -1,9 +1,11 @@
 package com.sortedSet;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Created by Грам on 14.05.2017.
@@ -42,13 +44,17 @@ public class Main {
         String homePath="D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt";
         String workPath="C:\\Users\\agra\\IdeaProjects\\learnJava\\src\\main\\java\\com\\sortedSet\\basket.txt";
 
-        try (FileWriter locFile = new FileWriter(homePath);
-        FileWriter baskFile =new FileWriter(homePath)) {
-            locFile.write(partsList.items().entrySet().toString() + "\n");
+
+        try (FileWriter locFile = new FileWriter(workPath);
+        FileWriter baskFile =new FileWriter(workPath)) {
+            locFile.write(partsList.toString());
+
             baskFile.write(myBasket.toString()+"" +"\n");
         }
 
-      /*  FileWriter locFile = null;
+
+
+        FileWriter locFile = null;
         try {
             locFile = new FileWriter("D:\\учеба\\My project\\learnJava\\src\\main\\java\\com\\sortedSet\\part.txt");
             locFile.write(partsList.items().entrySet().toString() + "\n");
@@ -67,7 +73,6 @@ public class Main {
                 e.printStackTrace();
             }
         }
-*/
 
         sell(myBasket, "Roots", 3);
         sell(myBasket, "Valve", 23);
@@ -96,7 +101,23 @@ public class Main {
         /*   for (String s : partsList.items().keySet()) {
             System.out.println(s);
         }*/
+        try(Scanner scanner = new Scanner(new BufferedReader(new FileReader(workPath)))){
+            scanner.useDelimiter(":");
+            while (scanner.hasNext()){
+                String name = scanner.next();
+               scanner.skip(scanner.delimiter());
+               String name2 = scanner.nextLine();
+
+                System.out.println(name+": "+"=> "+name2);
+            }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
+
+
 
 
     public static int sell(Basket basket, String autoPart, int quantity) {
@@ -133,4 +154,6 @@ public class Main {
         }
         basket.cleanBasket();
     }
+
+
 }
