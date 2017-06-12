@@ -1,12 +1,19 @@
 package com.serialize;
 
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.*;
 
 /**
  * Created by agra on 6/9/2017.
  */
 public class Operations {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+   static final  String PACKAGE = DataObject.class.getPackage().getName();
+    public static void main(String[] args) throws IOException, ClassNotFoundException, JAXBException {
+
         DataObject obj = new DataObject();
         obj.setMyData("Gramatik Aleksandr");
         obj.csObj.setHasCar(true);
@@ -26,5 +33,12 @@ public class Operations {
         si.close();
         System.out.println(objNew.myData);
         System.out.println(objNew.csObj.getHasCar());
+
+        JAXBContext jc=JAXBContext.newInstance(PACKAGE);
+        Marshaller m = jc.createMarshaller();
+        Unmarshaller um = jc.createUnmarshaller();
+
+        m.marshal("dataObj", file);
+        DataObject objX = (DataObject) um.unmarshal(file);
     }
 }

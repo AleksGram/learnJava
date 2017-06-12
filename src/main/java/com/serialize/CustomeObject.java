@@ -1,11 +1,14 @@
 package com.serialize;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-
-
+@XmlType(name ="customeObj")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CustomeObject implements Externalizable  {
     //Externalizible - all information about your classes is not written
     //executed only your write read methods
