@@ -12,12 +12,15 @@ import java.io.*;
  */
 public class Operations {
    static final  String PACKAGE = DataObject.class.getPackage().getName();
+
     public static void main(String[] args) throws IOException, ClassNotFoundException, JAXBException {
+        System.out.println(PACKAGE);
 
         DataObject obj = new DataObject();
         obj.setMyData("Gramatik Aleksandr");
         obj.csObj.setHasCar(true);
         File file = new File("store.bin");
+        File fileX = new File("my.xml");
 
         FileOutputStream fo = new FileOutputStream(file);
         ObjectOutputStream so = new ObjectOutputStream(fo);
@@ -34,11 +37,13 @@ public class Operations {
         System.out.println(objNew.myData);
         System.out.println(objNew.csObj.getHasCar());
 
-        JAXBContext jc=JAXBContext.newInstance(PACKAGE);
+        JAXBContext jc=
+                JAXBContext.newInstance(PACKAGE);
         Marshaller m = jc.createMarshaller();
         Unmarshaller um = jc.createUnmarshaller();
 
-        m.marshal("dataObj", file);
-        DataObject objX = (DataObject) um.unmarshal(file);
+
+        m.marshal("dataObj",fileX);
+        DataObject objX = (DataObject) um.unmarshal(fileX);
     }
 }

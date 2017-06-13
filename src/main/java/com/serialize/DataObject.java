@@ -15,9 +15,9 @@ import java.io.Serializable;
 
 @XmlType(name = "dataObj")
 public class DataObject extends NonSerializable implements Serializable {
-    @XmlElement
+    @XmlElement (required = true, name ="numberField")
     private int number = 5;
-    @XmlElement
+    @XmlElement(required = true)
     private String name = "Alex";
 
     private transient String[] definitions;
@@ -34,7 +34,7 @@ public class DataObject extends NonSerializable implements Serializable {
 
     private void readObject(ObjectInputStream in)throws IOException, ClassNotFoundException{
         in.defaultReadObject();
-        setMyData((String)in.readObject());
+       setMyData((String)in.readObject());
 
 
     }
