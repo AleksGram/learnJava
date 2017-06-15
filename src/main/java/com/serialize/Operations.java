@@ -1,15 +1,17 @@
 package com.serialize;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
 
-/**
- * Created by agra on 6/9/2017.
- */
+
 public class Operations {
    static final  String PACKAGE = DataObject.class.getPackage().getName();
     public static void main(String[] args) throws IOException, ClassNotFoundException, JAXBException {
@@ -34,11 +36,26 @@ public class Operations {
         System.out.println(objNew.myData);
         System.out.println(objNew.csObj.getHasCar());
 
-        JAXBContext jc=JAXBContext.newInstance(PACKAGE);
+      /*  JAXBContext jc=JAXBContext.newInstance(DataObject.class);
         Marshaller m = jc.createMarshaller();
         Unmarshaller um = jc.createUnmarshaller();
 
         m.marshal("dataObj", file);
-        DataObject objX = (DataObject) um.unmarshal(file);
+        DataObject objX = (DataObject) um.unmarshal(file);*/
+
+       // Create JSON
+
+
+
+        DataObject dataObject = new DataObject();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(dataObject);
+
+        System.out.println(json);
+
+
+        DataObject fromJson = gson.fromJson(json,DataObject.class);
+        System.out.println(fromJson);
+
     }
 }

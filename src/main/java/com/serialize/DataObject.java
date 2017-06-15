@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
+@XmlAccessorType(XmlAccessType.FIELD)
 // .NONE - save only elements marked by annotation
 // .FIELD - all non static and non-transient fields
 // .PROPERTY - all getter-setter pairs and fields marked by annotation
@@ -27,14 +27,14 @@ public class DataObject extends NonSerializable implements Serializable {
 // you should create next two methods
     private void writeObject(ObjectOutputStream out)throws IOException{
         out.defaultWriteObject();
-        out.writeObject(getMyData());
+       // out.writeObject(getMyData());
 
     }
 
 
     private void readObject(ObjectInputStream in)throws IOException, ClassNotFoundException{
         in.defaultReadObject();
-        setMyData((String)in.readObject());
+       // setMyData((String)in.readObject());
 
 
     }
