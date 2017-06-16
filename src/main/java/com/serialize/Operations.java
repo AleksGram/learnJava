@@ -17,7 +17,7 @@ public class Operations {
         DataObject obj = new DataObject();
         obj.setMyData("Gramatik Aleksandr");
         obj.csObj.setHasCar(true);
-        File file = new File("store.bin");
+        File file = new File(".\\src\\main\\java\\com\\serialize\\store.bin");
 
 
         FileOutputStream fo = new FileOutputStream(file);
@@ -37,7 +37,7 @@ public class Operations {
 
         try {
             User myUser = new User("Mike", 11025);
-            File xmlFile = new File("my.xml");
+            File xmlFile = new File(".\\src\\main\\java\\com\\serialize\\my.xml");
             myUser.setAge(25);
             JAXBContext jaxbContext = JAXBContext.newInstance(User.class);
             Marshaller jaxMarsaller = jaxbContext.createMarshaller();
