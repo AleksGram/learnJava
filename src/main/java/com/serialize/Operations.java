@@ -3,12 +3,9 @@ package com.serialize;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import java.io.*;
 
 
@@ -38,11 +35,8 @@ public class Operations {
         System.out.println(objNew.myData);
         System.out.println(objNew.csObj.getHasCar());
 
-<<<<<<< HEAD
 
-       // Create JSON
-
-
+        // Create JSON
 
         DataObject dataObject = new DataObject();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -50,12 +44,22 @@ public class Operations {
 
         System.out.println(json);
 
+        FileWriter jsonFile = new FileWriter(".\\src\\main\\java\\com\\serialize\\my.json");
+        try{
+            jsonFile.write(gson.toJson(dataObject));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        finally {
+            jsonFile.close();
+        }
 
-        DataObject fromJson = gson.fromJson(json,DataObject.class);
+
+        DataObject fromJson = gson.fromJson(json, DataObject.class);
         System.out.println(fromJson);
 
-=======
 
+       // write xml
         try {
             User myUser = new User("Mike", 11025);
             File xmlFile = new File(".\\src\\main\\java\\com\\serialize\\my.xml");
@@ -70,6 +74,7 @@ public class Operations {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
->>>>>>> 06f7ed47ce22a9f3d6951ed9fb4f9149cf7b7c51
+
+
     }
 }
