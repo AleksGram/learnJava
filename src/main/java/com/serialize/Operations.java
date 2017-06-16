@@ -36,7 +36,7 @@ public class Operations {
 
 
         try {
-            User myUser = new User("Mike");
+            User myUser = new User("Mike", 11025);
             File xmlFile = new File("my.xml");
             myUser.setAge(25);
             JAXBContext jaxbContext = JAXBContext.newInstance(User.class);

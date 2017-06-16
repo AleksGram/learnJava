@@ -13,10 +13,14 @@ public class User {
     String name;
     int age;
 
+    @XmlAttribute
+    int userID;
+
     public User() {}
 
-    public User(String name) {
+    public User(String name, int userID) {
         this.name = name;
+        this.userID=userID;
 
     }
 
