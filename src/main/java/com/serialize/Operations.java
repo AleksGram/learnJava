@@ -6,7 +6,10 @@ import com.google.gson.GsonBuilder;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class Operations {
@@ -66,14 +69,20 @@ public class Operations {
             myUser.setAge(25);
             JAXBContext jaxbContext = JAXBContext.newInstance(User.class);
             Marshaller jaxMarsaller = jaxbContext.createMarshaller();
+            Unmarshaller jaxUnmarshaller = jaxbContext.createUnmarshaller();
 
             jaxMarsaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxMarsaller.marshal(myUser, xmlFile);
             jaxMarsaller.marshal(myUser, System.out);
 
+            System.out.println((jaxUnmarshaller.unmarshal(xmlFile)).toString());
+
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        Path paths = Paths.get(".");
+        System.out.println(paths.toAbsolutePath());
 
 
     }
