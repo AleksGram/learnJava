@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Operations {
 
-    private static final long WAIT_SEC = 2;
+    private static final long WAIT_SEC = 3;
 
     public static void main(String[] args) throws InsufficientResourcesException, InterruptedException {
         final Account a = new Account(1000, new ReentrantLock() );
