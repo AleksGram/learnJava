@@ -43,7 +43,11 @@ public class Operations {
                             throw new InsufficientResourcesException();
                       //synchronized (acc1) {
                             System.out.println("Grabed the lock acc1");
+
                           // Thread.sleep(1000); // invoke the deadlock
+
+
+
                            // synchronized (acc2) {
                                 System.out.println("Grabed the lock acc2");
 
