@@ -25,6 +25,7 @@ public class Operations {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+
                 }
             }
         }).start();
@@ -59,6 +60,8 @@ public class Operations {
                         acc1.getLock().unlock();
                     }
                 } else {
+                    acc1.incFailedTransCount();
+                    acc2.incFailedTransCount();
                     throw new InsufficientResourcesException();
                 }
             }catch (InsufficientResourcesException e){

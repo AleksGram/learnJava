@@ -1,6 +1,7 @@
 package com.treads2;
 
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -10,6 +11,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Account {
     private int balance;
     Lock l;
+    private AtomicInteger failCounter;
+
 
 
     public Account(int initBalance, Lock l) {
@@ -18,8 +21,13 @@ public class Account {
 
     }
 
+    public AtomicInteger getFailCounter() {
+        return failCounter;
+    }
+
     public Lock getLock() {
         return l;
+
     }
 
     public int getBalance() {
@@ -34,6 +42,9 @@ public class Account {
     public void deposit(int amount) {
         balance += amount;
 
+    }
+    public void incFailedTransCount(){
+        failCounter.incrementAndGet();
     }
 
 
