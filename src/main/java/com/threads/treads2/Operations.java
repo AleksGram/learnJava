@@ -1,8 +1,7 @@
-package com.treads2;
+package com.threads.treads2;
 
 import javax.naming.InsufficientResourcesException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -42,25 +41,21 @@ public class Operations {
 
                         if (acc1.getBalance() < amount)
                             throw new InsufficientResourcesException();
-                      //synchronized (acc1) {
-                            System.out.println("Grabed the lock acc1");
 
-                          // Thread.sleep(1000); // invoke the deadlock
-
-
-
-                           // synchronized (acc2) {
-                                System.out.println("Grabed the lock acc2");
 
                                 acc1.withdraw(amount);
+                        System.out.println("Grabed the lock acc1");
+
+
                                 acc2.deposit(amount);
+                        System.out.println("Grabed the lock acc2");
                           //  }
                        // }
                     } finally {
                         acc1.getLock().unlock();
                     }
                 } else {
-                   //   acc1.incFailedTransCount();
+                     // acc1.incFailedTransCount();
                    // acc2.incFailedTransCount();
                     throw new InsufficientResourcesException();
                 }

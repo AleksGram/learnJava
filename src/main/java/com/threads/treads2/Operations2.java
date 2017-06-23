@@ -1,10 +1,9 @@
-package com.treads2;
+package com.threads.treads2;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -19,15 +18,15 @@ public class Operations2 {
 
 
         ExecutorService service = Executors.newFixedThreadPool(3);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             service.submit(
-                    new Transfer(ac1, ac2, rnd.nextInt(400),i+10)
+                    new Transfer(ac1, ac2, rnd.nextInt(40),i+10)
             );
 
         }
 
        service.shutdown();
-        service.awaitTermination(5000,TimeUnit.MILLISECONDS);
+        service.awaitTermination(2000,TimeUnit.MILLISECONDS);
     }
 
 

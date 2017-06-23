@@ -1,7 +1,6 @@
-package com.treads2;
+package com.threads.treads2;
 
 import javax.naming.InsufficientResourcesException;
-import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
