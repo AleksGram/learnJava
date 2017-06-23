@@ -9,21 +9,25 @@ import java.util.concurrent.TimeUnit;
  * Created by agra on 6/22/2017.
  */
 public class Transfer implements Callable<Boolean> {
-    private static final long WAIT_SEC = 3;
+    private static final long WAIT_SEC = 2;
     Account acc1;
     Account acc2;
     int amount;
+    int transferID;
 
 
-    public Transfer(Account acc1, Account acc2, int amount) {
+    public Transfer(Account acc1, Account acc2, int amount, int transferID) {
 
         this.acc1 = acc1;
         this.acc2 = acc2;
         this.amount = amount;
+        this.transferID=transferID;
 
     }
 
-
+    public int getTransferID() {
+        return transferID;
+    }
 
     @Override
     public Boolean call() throws Exception {
@@ -38,11 +42,11 @@ public class Transfer implements Callable<Boolean> {
 
 
                         acc1.withdraw(amount);
-                        System.out.println("Grabed the lock acc1 ");
+                        System.out.println("Grabed the lock acc1 from transfer "+getTransferID());
 
                         acc2.deposit(amount);
                         System.out.println("Grabed the lock acc2");
-                        Thread.sleep(new Random().nextInt(1000 - 5000));
+                       // Thread.sleep(new Random().nextInt(1000 - 5000));
 
 
                     } finally {

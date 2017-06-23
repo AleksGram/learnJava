@@ -21,7 +21,7 @@ public class Operations2 {
         ExecutorService service = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 10; i++) {
             service.submit(
-                    new Transfer(ac1, ac2, rnd.nextInt(400))
+                    new Transfer(ac1, ac2, rnd.nextInt(400),i+10)
             );
 
         }

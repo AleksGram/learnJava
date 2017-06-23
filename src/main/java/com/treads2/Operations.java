@@ -60,8 +60,8 @@ public class Operations {
                         acc1.getLock().unlock();
                     }
                 } else {
-                    acc1.incFailedTransCount();
-                    acc2.incFailedTransCount();
+                   //   acc1.incFailedTransCount();
+                   // acc2.incFailedTransCount();
                     throw new InsufficientResourcesException();
                 }
             }catch (InsufficientResourcesException e){
