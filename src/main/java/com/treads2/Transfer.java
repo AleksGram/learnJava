@@ -14,11 +14,16 @@ public class Transfer implements Callable<Boolean> {
     Account acc2;
     int amount;
 
+
     public Transfer(Account acc1, Account acc2, int amount) {
+
         this.acc1 = acc1;
         this.acc2 = acc2;
         this.amount = amount;
+
     }
+
+
 
     @Override
     public Boolean call() throws Exception {
@@ -33,11 +38,11 @@ public class Transfer implements Callable<Boolean> {
 
 
                         acc1.withdraw(amount);
-                        System.out.println("Grabed the lock acc1");
+                        System.out.println("Grabed the lock acc1 ");
 
                         acc2.deposit(amount);
                         System.out.println("Grabed the lock acc2");
-                        Thread.sleep(new Random().nextInt(1000-5000));
+                        Thread.sleep(new Random().nextInt(1000 - 5000));
 
 
                     } finally {
