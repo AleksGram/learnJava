@@ -14,7 +14,7 @@ public class Main {
             System.out.println("A");
         }
 
-            System.out.println("Start waiting...");
+            System.out.println("Start waiting...join() called");
             thread.join();
             System.out.println(">>FINISH<<");
         }
