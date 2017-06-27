@@ -1,7 +1,5 @@
 package com.threads.rabbit;
 
-import com.threads.thread3.accordion.PrintRunnable;
-
 /**
  * Created by agra on 6/27/2017.
  */
