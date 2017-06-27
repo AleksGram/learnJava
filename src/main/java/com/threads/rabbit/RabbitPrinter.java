@@ -7,6 +7,9 @@ import com.threads.thread3.accordion.PrintRunnable;
  */
 public class RabbitPrinter implements Runnable {
 
+    public RabbitPrinter() {
+    }
+
     @Override
     public void run() {
         System.out.println("New rabbit born!");
@@ -20,8 +23,10 @@ public class RabbitPrinter implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
-       new Thread().start(new RabbitPrinter());
+        new Thread(new RabbitPrinter()).start();
+        //new Thread(new RabbitPrinter()).start();
     }
     private  String spaces(int count) {
         String result = "";
