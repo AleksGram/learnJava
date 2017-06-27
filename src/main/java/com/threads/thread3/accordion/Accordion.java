@@ -1,4 +1,4 @@
-package com.threads.thread_labs;
+package com.threads.thread3.accordion;
 
 /**
  * Created by agra on 6/25/2017.
@@ -38,7 +38,7 @@ public class Accordion {
             threadCoordinator2.start();
 
           threadCoordinator.join();
-            System.out.println("<<Coordinator! finished>>");
+            System.out.println("<<Coordinator1 finished>>");
             threadCoordinator2.join();
             System.out.println("<<Coordinator2 finished>>");
 

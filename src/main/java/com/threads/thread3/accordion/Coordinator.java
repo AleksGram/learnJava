@@ -1,4 +1,4 @@
-package com.threads.thread_labs;
+package com.threads.thread3.accordion;
 
 /**
  * Created by agra on 6/25/2017.
