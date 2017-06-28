@@ -11,7 +11,7 @@ public class InterruptBuffer {
             try {
                 // ?
 
-                new ThreadNode(Thread.currentThread(), producers.nextNode);
+              new ThreadNode(Thread.currentThread(), null);
 
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
@@ -19,6 +19,8 @@ public class InterruptBuffer {
         elem = newElem;
         if (consumers != null) {
             consumers.thread.interrupt();
+
+
             // ?
         } else{
             throw new InterruptedException();
@@ -31,7 +33,7 @@ public class InterruptBuffer {
         while (elem == null) {
             try {
                 // ?
-                new ThreadNode(Thread.currentThread(), consumers.nextNode);
+                new ThreadNode(Thread.currentThread(), null);
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
         }
@@ -40,6 +42,7 @@ public class InterruptBuffer {
         if (producers != null) {
             producers.thread.interrupt();
             // ?
+
         }else{
             throw new InterruptedException();
 
