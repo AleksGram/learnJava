@@ -1,7 +1,7 @@
 package com.threads.timeOutException;
 
 
-
+import java.util.concurrent.TimeoutException;
 
 public class ConsumerTimed implements Runnable {
     private final SingleElementBufferTimed buffer;
@@ -21,8 +21,9 @@ public class ConsumerTimed implements Runnable {
             } catch (InterruptedException e) {
                 System.out.println(Thread.currentThread().getName() + " stopped.");
                 return;
-            } catch (java.util.concurrent.TimeoutException e) {
-                e.printStackTrace();
+            } catch (TimeoutException e) {
+                System.out.println(Thread.currentThread().getName() + " time out.");
+                return;
             }
         }
     }

@@ -5,7 +5,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by agra on 6/28/2017.
  */
-public class SingleElementBufferTimed {
+public class  SingleElementBufferTimed {
     private Integer elem = null;
 
     public synchronized void put(Integer newElem, long timeout) throws InterruptedException, TimeoutException {
@@ -18,6 +18,11 @@ public class SingleElementBufferTimed {
             waitTime -= elapsedTime;
         }
         // todo: insert throw new TimeoutException
+       if(waitTime<=0){
+            throw new TimeoutException();
+       }
+
+
         this.elem = newElem;
         this.notifyAll();
     }
@@ -32,6 +37,10 @@ public class SingleElementBufferTimed {
             waitTime -= elapsedTime;
         }
         // todo: insert throw new TimeoutException
+        if(waitTime<=0){
+            throw new TimeoutException();
+
+        }
         int result = this.elem;
         this.elem = null;
         this.notifyAll();
