@@ -6,10 +6,11 @@ public class InterruptBuffer {
     private ThreadNode consumers = null;
     private Integer elem = null;
 
-    public synchronized void put(int newElem) {
+    public synchronized void put(int newElem) throws InterruptedException {
         while (elem != null) {
             try {
                 // ?
+                 new ThreadNode(producers.thread,producers.nextNode);
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
         }
@@ -17,13 +18,16 @@ public class InterruptBuffer {
         if (consumers != null) {
             consumers.thread.interrupt();
             // ?
+        }else {
+            throw new InterruptedException();
         }
     }
 
-    public synchronized int get() {
+    public synchronized int get() throws InterruptedException {
         while (elem == null) {
             try {
                 // ?
+                new ThreadNode(consumers.thread,consumers.nextNode);
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
         }
@@ -32,8 +36,11 @@ public class InterruptBuffer {
         if (producers != null) {
             producers.thread.interrupt();
             // ?
-        }
-        return result;
+
+        }else {
+            throw new InterruptedException();
+
     }
+        return result;
 }
-//}
+}

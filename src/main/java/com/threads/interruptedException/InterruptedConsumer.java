@@ -10,7 +10,12 @@ public class InterruptedConsumer implements Runnable {
     @Override
     public void run() {
         while (true) {
-            int elem = buffer.get();
+            int elem = 0;
+            try {
+                elem = buffer.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println(elem + " consumed");
         }
     }
