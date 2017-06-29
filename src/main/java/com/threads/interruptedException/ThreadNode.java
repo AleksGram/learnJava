@@ -1,8 +1,8 @@
 package com.threads.interruptedException;
 
 public class ThreadNode {
-    public final Thread thread;
-    public final ThreadNode nextNode;
+    public  Thread thread;
+    public  ThreadNode nextNode;
 
     public ThreadNode(Thread thread, ThreadNode nextNode) {
         this.thread = thread;
