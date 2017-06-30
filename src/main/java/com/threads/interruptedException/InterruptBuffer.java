@@ -42,11 +42,11 @@ public class InterruptBuffer {
 
                 } else {
                     ThreadNode temp = consumers;
-                    while (temp.nextNode != null) {
+                    while (temp.nextNode != null)
                         temp = temp.nextNode;
 
                         temp.nextNode = new ThreadNode(Thread.currentThread(), null);
-                    }
+
                 }
 
                 this.wait();
