@@ -17,11 +17,10 @@ public class InterruptBuffer {
 
 
                     ThreadNode temp = producers;
-                    while (temp.nextNode != null) {
+                    while (temp.nextNode != null)
                         temp = temp.nextNode;
                         temp.nextNode = new ThreadNode(Thread.currentThread(), null);
 
-                    }
                 }
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
@@ -33,6 +32,7 @@ public class InterruptBuffer {
             consumers = consumers.nextNode;
         }
     }
+
     public synchronized int get() throws InterruptedException {
         while (elem == null) {
             try {
@@ -40,14 +40,15 @@ public class InterruptBuffer {
                 if (consumers == null) {
                     consumers = new ThreadNode(Thread.currentThread(), null);
 
-                }else{
+                } else {
                     ThreadNode temp = consumers;
-                    while(temp.nextNode!=null){
+                    while (temp.nextNode != null) {
                         temp = temp.nextNode;
-                        temp.nextNode =  new ThreadNode(Thread.currentThread(), null);
 
+                        temp.nextNode = new ThreadNode(Thread.currentThread(), null);
                     }
                 }
+
                 this.wait();
             } catch (InterruptedException e) {/*NOP*/}
         }
@@ -56,8 +57,9 @@ public class InterruptBuffer {
         if (producers != null) {
             producers.thread.interrupt();
             // ?
-            producers=producers.nextNode;
+            producers = producers.nextNode;
 
-    }
+        }
         return result;
-}}
+    }
+}
