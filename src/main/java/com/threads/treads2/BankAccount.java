@@ -1,5 +1,6 @@
 package com.threads.treads2;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -14,7 +15,7 @@ public class BankAccount {
     public BankAccount(String accountId, int initAmmount) {
         this.accountId = accountId;
         this.initAmount = initAmmount;
-        this.lock=new ReentrantLock();
+        this.lock = new ReentrantLock();
 
     }
 
@@ -57,38 +58,57 @@ public class BankAccount {
     }*/
 
 
-    public void deposit(int amount) {
-        lock.lock();
+    public void deposit(int amount) throws InterruptedException {
+        // lock.lock();
+        boolean status=false;
         try {
-            if (amount <= 0) {
-                System.out.println("The amount of deposit must to be > 0, Please correct your amount");
+            if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
+                try {
+                    if (amount <= 0) {
+                        System.out.println("The amount of deposit must to be > 0, Please correct your amount");
+                    } else {
+                        initAmount += amount;
+                        status=true;
+                        System.out.println("added " + amount);
+                    }
+                } finally {
+                    lock.unlock();
+                }
             } else {
-                initAmount += amount;
-                System.out.println("added " + amount);
+                System.out.println("Lock is not avaliable now!");
             }
-        } finally {
-            lock.unlock();
+        } catch (InterruptedException e) {
         }
+        System.out.println("Transaction status = "+status);
     }
 
-    public int withdraw(int ammount) {
-        lock.lock();
+    public int withdraw(int ammount) throws InterruptedException {
+        boolean status=false;
         try {
-            if (ammount > this.initAmount) {
-                System.out.println("Error: Not enought cash");
+            if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
+                try {
+                    if (ammount > this.initAmount) {
+                        System.out.println("Error: Not enought cash");
+                    } else {
+                        initAmount += (-ammount);
+                        status=true;
+                        System.out.println("withdrawed " + ammount);
+                    }
+                    System.out.println("Cash on account is: " + getInitAmmount());
+                } finally {
+                    lock.unlock();
+                }
             } else {
-                initAmount += (-ammount);
-                System.out.println("withdrawed " + ammount);
+                System.out.println("Lock is not avaliable now!");
             }
-            System.out.println("Cash on account is: " + getInitAmmount());
-            return getInitAmmount();
-
-        } finally {
-            lock.unlock();
+        } catch (InterruptedException e) {
         }
+        System.out.println("Transaction status = "+status);
+        return getInitAmmount();
     }
 
-    public void transfer(int forDeposit, int forWithdraw) {
+
+    public void transfer(int forDeposit, int forWithdraw) throws InterruptedException {
         deposit(forDeposit);
         withdraw(forWithdraw);
     }

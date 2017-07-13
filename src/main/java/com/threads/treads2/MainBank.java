@@ -11,7 +11,11 @@ public class MainBank {
             @Override
             public void run() {
                 System.out.println("User1 started...");
-       account.transfer(300,50);
+                try {
+                    account.transfer(300,50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("User1 finished");
             }
         }).start();
@@ -20,9 +24,38 @@ public class MainBank {
             @Override
             public void run() {
                 System.out.println("User2 started...");
-               account.transfer(203,100);
+                try {
+                    account.transfer(203,100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("User2 finished");
             }
         }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("User3 started...");
+                try {
+                    account.withdraw(203);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("User3 finished");
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("User4 started...");
+                try {
+                    account.withdraw(203);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("User4 finished");
+            }
+        }).start();
     }
+
 }
