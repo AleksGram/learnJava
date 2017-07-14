@@ -1,11 +1,11 @@
-package com.threads.treads2;
+package com.threads.buchakaChallenge;
 
 /**
  * Created by agra on 7/11/2017.
  */
 public class MainBank {
     public static void main(String[] args) {
-       final BankAccount account = new BankAccount("12345-678", 1000);
+    /*   final TransferChallenge account = new TransferChallenge("12345-678", 1000);
 
         new Thread(new Runnable() {
             @Override
@@ -55,7 +55,16 @@ public class MainBank {
                 }
                 System.out.println("User4 finished");
             }
-        }).start();
+        }).start();*/
+
+
+        TransferChallenge account1 = new TransferChallenge("12345-678", 500.00);
+        TransferChallenge account2 = new TransferChallenge("98765-432", 1000.00);
+
+        new Thread(new Transfer(account1, account2, 10.00), "Transfer1").start();
+        new Thread(new Transfer(account2, account1, 55.88), "Transfer2").start();
+
+
     }
 
 }

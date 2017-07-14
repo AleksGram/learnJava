@@ -1,4 +1,4 @@
-package com.threads.treads2;
+package com.threads.buchakaChallenge;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
