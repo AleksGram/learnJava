@@ -57,13 +57,35 @@ public class MainBank {
             }
         }).start();*/
 
-
+/*
+// Transfer Challenge
         TransferChallenge account1 = new TransferChallenge("12345-678", 500.00);
         TransferChallenge account2 = new TransferChallenge("98765-432", 1000.00);
 
         new Thread(new Transfer(account1, account2, 10.00), "Transfer1").start();
         new Thread(new Transfer(account2, account1, 55.88), "Transfer2").start();
+*/
 
+        Tutor tutor = new Tutor();
+        Student student = new Student(tutor);
+        tutor.setStudent(student);
+
+        Thread tutorThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                tutor.studyTime();
+            }
+        });
+
+        Thread studentThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                student.handInAssignment();
+            }
+        });
+
+        tutorThread.start();
+        studentThread.start();
 
     }
 
